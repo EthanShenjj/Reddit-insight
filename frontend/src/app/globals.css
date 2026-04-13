@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Manrope", sans-serif;
+
+  --color-primary: #041627;
+  --color-primary-container: #1a2b3c;
+  --color-secondary: #ad2c00;
+  --color-tertiary-container: #3b94f0;
+  --color-surface: #f7fafc;
+  --color-surface-container-low: #f1f4f6;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface: #181c1e;
+  --color-on-surface-variant: #44474c;
+  --color-outline-variant: #c4c6cd;
+  --color-tertiary-fixed: #d3e4ff;
+
+  /* Re-mapping for backward compatibility if needed */
+  --color-background: var(--color-surface);
+  --color-foreground: var(--color-on-surface);
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans antialiased;
+  }
+}
+
+/* Custom scrollbar for the terminal/report view */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.bg-primary-gradient {
+  background: linear-gradient(135deg, #041627 0%, #1a2b3c 100%);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+}
+
+/* Markdown Styles for ReportViewer */
+.prose {
+  @apply text-on-surface leading-relaxed;
+}
+.prose h1, .prose h2, .prose h3 { 
+  @apply font-headline font-bold text-primary mt-8 mb-4 tracking-tight; 
+}
+.prose p { @apply mb-4; }
+.prose table { @apply w-full border-collapse my-6 text-sm; }
+.prose th, .prose td { @apply border border-outline-variant/30 p-3 text-left; }
+.prose th { @apply bg-surface-container-low font-bold text-primary; }
+.prose ul, .prose ol { @apply ml-6 mb-4 list-disc; }
+.prose li { @apply mb-2; }
+.prose strong { @apply font-bold text-primary; }
+.prose blockquote { @apply border-l-4 border-primary pl-4 italic my-4; }
+
+/* Status Badges */
+.badge {
+  @apply px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider;
+}
+.badge-pending { @apply bg-outline-variant/20 text-on-surface-variant; }
+.badge-scraping { @apply bg-tertiary-container/20 text-tertiary-container; }
+.badge-analyzing { @apply bg-primary/10 text-primary; }
+.badge-completed { @apply bg-green-100 text-green-700; }
+.badge-failed { @apply bg-secondary/10 text-secondary; }

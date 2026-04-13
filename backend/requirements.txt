@@ -1,0 +1,10 @@
+flask
+flask-sqlalchemy
+flask-cors
+openai
+apify-client
+pandas
+python-dotenv
+google-generativeai
+anthropic
+tavily-python
